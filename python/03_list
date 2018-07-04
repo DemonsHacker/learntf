@@ -1,0 +1,323 @@
+'''
+可变序列list 
+不可变序列tuple str
+'''
+
+#判断值是否属于序列
+lst = [1,2,3,4,5,6,7,8]
+a,b,c = 1,2.0,'hello'
+print(a in lst)
+print(b in lst)
+print(c not in lst)
+
+#链接与重复
+lst1 = [1,2,3]
+lst2 = ['a','b']
+print(lst2 + lst1)
+print(lst1 + lst2)
+lst1.append(lst2) #直接在lst1后面追加lst2
+print(lst1)
+print(lst1 * 3) #重复三遍lst1
+
+#下标索引  指向一个元素
+print(lst)
+print(lst[0],lst[2],lst[7])
+print(lst[-1]) #lst最后一个值
+lst[4] = 'hello'
+
+#切片    指向一列元素
+print(lst[0:2])  #区间0-2的值  左闭右开
+print(lst[2:5])
+print(lst[:5])   #从0开始到5
+print(lst[4:])   #从4开始到结束
+print(lst[1:-1])
+
+#步长
+lst = 'abcdefght'
+print(lst)
+print(lst[2:6:2]) #2-6  步长为2
+print(lst[:6:3])  #0-6  步长为3
+print(lst[1::2])  #0-结尾  步长为2
+print(lst[::2])  #从头到尾  步长为2
+
+#序列的基本内置全局函数
+lst = [1,2,3,4,5,6,7,8,9,0]
+print(len(lst))  #秋长度
+print(max(lst),min(lst),sum(lst))  #函数
+print(lst.index(9))  #方法
+lst = [1,1,2,3,3,4,4,4,4,5,6,6,6,6]
+print(lst.count(6))
+
+#homework
+x = [1,2,3,1,[1],[1,1]]
+print(x.count(1))  #2
+
+x = [1,2,5,1,"1","1"]
+print(x.count(1)) #2
+
+y = [45,67,89,45,34,22,1]
+print(y.index(45))  #返回第一个匹配的索引值
+
+x = [1,2,3,4,5,'b','a',[1,2,3,4]]
+print(type(x[1]))
+print(type(x[2:5]))
+print(type(x[-2:-1]))
+print(type(x[-2]))
+
+#列表的特征
+lst = [1,2,3,'abc',[1,2,3,['name',1,2,3],2]]
+print(lst[-1][3][0])  #name
+
+
+grades = [100,99,78]
+name = ['小明','小红']
+print(name + ['团支书'])
+name.append('团支书')
+print(name)
+
+#类表与生成器
+a = range(10)  #0-10  左闭右开
+print(a,type(a))
+range(0,10,2)  #代表指向了0 2 4 6 8 步长为2
+lst = list(range(5))
+print(lst)
+lst = list(range(4,10,2))  #使用生成器直接生成列表
+print(lst)
+
+print(range(10))
+m = range(10)
+print(m[-1],m[2],m[5])
+
+#list  ----添加元素
+lst = list(range(10))
+print(lst + [1,2,3])
+lst.append('a')
+print(lst)    #append 原有基础上追加
+
+a = [1,2,3]
+b = [3,4,5]
+a.append(b)    #把b当成列表的一项追加到a后
+print(a)
+
+a = [1,2,3]
+a.extend(b)    #把a和b串联起来
+print(a)
+
+#list ----- 删除元素
+lst = list(range(10))   #函数
+print(lst)
+lst.remove(5)   #方法
+print(lst)
+
+del lst[0]
+print(lst)
+
+del lst[2:4]  #语句
+print(lst)
+
+lst.clear()
+print(lst)
+
+
+#list ---- 插入元素
+lst = list(range(10))
+print(lst)
+lst.insert(0,'a')  #第0个索引的位置插入a
+print(lst)
+
+#list ---- 复制
+x = list(range(10))
+m = x     #x,m指向同一个序列，一个改变，另一个也会改变
+print(x)
+print(m)
+x[2] = 101
+print(x)
+print(m)  #x,m都会改变，指向同一个内容
+
+x = list(range(10))
+n = x.copy() #复制一个新的列表，x,n指向两个列表
+print(x)
+print(n)
+x[2] = 101
+print(x)
+print(n)    #x变   n不变
+
+#List  ----- 排序
+lst1 = list(range(10,20))
+lst2 = ['ssd','abc','efd']
+lst1.sort(reverse=True)
+lst2.sort()
+print(lst1,lst2)
+
+lst1 = [1,222,3,4,66,5]
+lst3 = sorted(lst1)  #排序并复制，原序列不变
+print(lst1)
+print(lst3)
+
+#元组 tuple  不可变的列表
+tup1 = ('physics','chemistry',1997,2000)
+tup2 = (1,2,3,4,5)
+tup3 = "a","b","c","d"  #可以不加括号
+tup4 = (50,)  #元组中只包含一个元素时，需要在元素后面加逗号
+print(tup1[2],tup3[:2])
+
+del tup3 #元组不能单独删除内部元素（不可变性），但可以del语句来删除挣个元组
+print(len(tup1))
+print(tup1 + tup2)
+print(tup4 * 3)
+print(max(tup2),min(tup2))
+
+lst = list(range(2,10))
+print(lst)
+lst.append(1)
+print(lst)
+lst.extend([1])
+print(lst)
+
+x = list(range(2,10))
+b = [1,2,3]
+x.append(b)
+print(x)
+x = list(range(2,10))
+x.extend(b)
+print(x)
+
+x = list(range(2,10))
+x.append('abc')
+print(x)
+x = list(range(2,10))
+x.extend('abc')
+print(x)
+
+x = list(range(2,10))
+x.insert(3,'abc')
+print(x)
+
+#创建随机数值列表，按照降序排列
+
+
+#sort与sorted的区别
+x = [2,1,5,3,7,4,6]
+x.sort()
+print(x)
+
+x = [2,1,5,3,7,4,6]
+y = sorted(x)
+print(y)
+print(x)
+
+s = [32,45,63,12,45,89,77]
+s.remove(45) #删除第一个匹配到的45
+print(s)
+
+s = [32,45,63,12,45,89,77]
+del s[1]
+print(s)
+
+s = [32,45,63,12,45,89,77]
+print(s)
+s.pop(1)
+print(s)
+
+m = [4,5,6,73,4,4,4,4,2]
+m.remove(4)
+print(m)
+
+#字符串
+
+a = 'abc'
+b = "cde"
+c = 'adfd"dfdf"df'
+d = "abcd'dfd'cfd"
+print("\"")  #输出双引号
+print("a\nb")
+print("\\")  #转义
+print("D:\\learn\\untitled\\venv\\Include\\logs")
+
+#字符串常用功能
+
+# str ---- 替换
+st = 'i`m handsome'
+st2 = st.replace('handsome','beautiful')
+print(st)
+print(st2)
+st = 'hahaha'
+st2 = st.replace('a','e',2)#只改两个a
+print(st)
+print(st2)
+
+# str ---- 拆分
+st = "abc,def,hgl"
+lst = st.split(',') #分成列表  每个列表都是,
+print(lst)
+
+#str ---- 连接字符串
+m = '-'
+str2 = m.join(lst)
+print(str2)
+
+#判断开头和结尾
+st = 'abcdefg'
+print(st.startswith('a'),st.endswith('f'))
+
+#大小写互换
+st = 'aBcDeFgHiJ'
+print(st.upper())  #全部大写
+print(st.lower())  #全部小写
+print(st.swapcase()) #大小写互换
+print(st.capitalize()) #首字母大写
+st = 'aBcDeFgHiJ '
+print(st)
+st.rstrip()   #删除字符串尾的空格
+print(st)
+print(st.isnumeric()) #判断string中是否包含数字
+print(st.isalpha())  #判断string中是否都是字符
+
+#格式化字符  在字符串中输入变量
+name = "this is 好人"
+#strue = "hehehe is "
+x = 4
+y = "hehe"
+z = 4.2
+print("this is %i" %x)
+print("this is %s" %y)
+print("this is %f" %z)
+
+print("小明的成绩为%i,小红的成绩为%i" %(70,90))
+
+
+m = 3.1415926
+print("pi is %f" %m)
+print("pi is %.2f" %m)  #2位小数  四舍五入
+
+#显示正号，负号  根据数字直接显示
+m = 100
+print("have fun %+i" %m)
+print("have fun %.2f" %-0.01)
+
+#加空格  空格和正号只能显示一个
+m = 10
+print("have fun % i" %m)   #格式化中有空格和正号只能显示一个
+print("have fun % +i" %m)
+print("have fun %.2f" %-0.01)
+
+
+m = 123.123123123
+print("have fun %.2e" %m)
+print("have fun %.4E" %m)
+
+# %g  自动选择科学计数法和小数形式
+m = 14663562323.5467673423
+m1 = 1.2
+print("have fun %g" %m)
+print("have fun %g" %m1)
+
+print("今天天气怎么样{}".format(',非常好'))
+st = '您好！{}'
+print(st.format('谢谢'))
+
+print("{}{}{}".format('a','b','c'),
+      '\n' "{0}{1}{1}{0}" .format('a','b','c'),'\n')
+print("{}{}{}".format('a','b','c'))
+
+print("%.2f%%"%90)
